@@ -26,3 +26,6 @@ Documentation for everything I make!
 
 ## Contributing
 Please feel free to contribute to any docs. Whether to fix spelling mistakes or add your own pages for various things. See `Last Updated` badge for when the last update to `docs.alub.dev` occurred.
+
+## Credits
+- [FaultyFunctions](https://github.com/FaultyFunctions) - Creator of the docs template.
