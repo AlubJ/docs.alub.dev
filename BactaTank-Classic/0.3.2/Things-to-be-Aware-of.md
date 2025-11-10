@@ -7,4 +7,4 @@ Generally, sharing your mods is considered to be okay, and it is unlikely that a
 Never put your mod behind a paywall. This is a legally dubious tactic in trying to earn money from your mods but could potentially put yourself at legal risk. Just, like share your mods for free man.
 
 ## Format Limits
-The model format TtGames uses does a lot of pointer hopping, which means adding new things inside fo the model is extremely complex. Adding and removing attributes is a planned feature within BactaTank Classic, but as of current is not possible. Adding new textures, materials, meshes or anything else is not possible. You can find out more in-depth details about why the limits exist [here](Technical-Documentation)
+The model format TtGames uses does a lot of pointer hopping, which means adding new things inside of the model is extremely complex. Adding and removing attributes is a planned feature within BactaTank Classic, but as of current is not possible. Adding new textures, materials, meshes or anything else is not possible. You can find out more in-depth details about why the limits exist [here](Technical-Documentation)
