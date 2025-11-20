@@ -17,7 +17,7 @@
 
 [Badge License]: https://img.shields.io/badge/License-MIT-blue
 [Badge Support]: https://img.shields.io/badge/Support%20Me-Ko--Fi-red
-[Badge Discussions]: https://img.shields.io/badge/Last%20Updated-03/11/2025-purple
+[Badge Discussions]: https://img.shields.io/badge/Last%20Updated-20/11/2025-purple
 
 <!---------------------------------[ Content ]---------------------------------->
 

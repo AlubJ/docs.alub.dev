@@ -38,6 +38,8 @@ To unpack the game files, run QuickBMS, select the BMS script, then select all o
 ### Installing The Blender Add-on
 Installing the Blender Add-on is required if you want to edit meshes within a model. To install, in Blender go to `Edit >> Preferences >> Add-ons`, hit the `Install` button and select `bactatank-blender-addon-v[version].zip`. After installing you can enable the plugin and the BactaTank features will now be present.
 
+?> The latest Blender version the add-on supports is `v4.1`. This is due to Blender removing important API features on minor version changes. I have addressed this issue yet they still continue to make breaking changes in minor version updates.
+
 ### Useful Resources
 - [TtGames Modding Discord Server](https://discord.gg/ttgames-lego-modding-539431629718945793)
 

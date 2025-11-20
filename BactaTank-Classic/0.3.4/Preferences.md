@@ -21,7 +21,7 @@ Enabling this will open a system console on the next launch. Most operations tha
 This enables a verbose console output. BactaTank Classic will output every value it reads with it's hexidecimal offset in the file to the console. Extremely useful for advanced modders.
 
 ### Always Export Model Version 2
-Enabling this will export the model to version 2 of the `*_PC.GHG` format. This will convert characters that were made for LIJ1 and LB1 to TCS. Enabling this may also increase load times in LIJ1 and LB1.
+Enabling this will export the model to version 2 of the `*_PC.GHG` format. This will convert characters that were made for LIJ1 and LB1 to TCS. Enabling this may also decrease load times in LIJ1 and LB1.
 
 ### Allow Version 1 Model Loading
 Model version 1 is the primary model version used in Transformers: The Game. Enabling this will allow you to load models from that game. This is extremely unstable but here because some models load. Saving a version 1 model will automatically convert it to a version 2 model, resulting in the model no longer working in Transformers: The Game.
