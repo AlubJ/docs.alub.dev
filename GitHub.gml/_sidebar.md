@@ -1,5 +1,6 @@
 - [Introduction](README)
 - [Getting Started](Getting-Started)
+- [Authentication](Authentication)
 - [Request Structures](Requests)
 
 ---
@@ -7,22 +8,23 @@
 **API Reference**
 - [HTTP Requests](HTTP-Requests)
 - [GitHub Constructors](GitHub-Constructors)
+- [GitHub OAuth](GitHubOAuth)
 
 ---
 
 **GitHub API Endpoints**
 - *Gists*
-    - [Gists](Gists.md)
-    - [Gist Comments](Gist-Comments.md)
+    - [Gists](Gists)
+    - [Gist Comments](Gist-Comments)
 - *Issues*
-    - [Issue Assignees](Issue-Assignees.md)
-    - [Issue Comments](Issue-Comments.md)
-    - [Issue Events](Issue-Events.md)
-    - [Issues](Issues.md)
-    - [Issue Labels](Issue-Labels.md)
-    - [Issue Milestones](Issue-Milestones.md)
-    - [Issue Sub-issues](Issue-Sub-Issues.md)
-    - [Issue Timeline](Issue-Timeline.md)
+    - [Issue Assignees](Issue-Assignees)
+    - [Issue Comments](Issue-Comments)
+    - [Issue Events](Issue-Events)
+    - [Issues](Issues)
+    - [Issue Labels](Issue-Labels)
+    - [Issue Milestones](Issue-Milestones)
+    - [Issue Sub-issues](Issue-Sub-Issues)
+    - [Issue Timeline](Issue-Timeline)
 - *Releases*
-    - [Releases](Releases.md)
-    - [Release Assets](Release-Assets.md)
+    - [Releases](Releases)
+    - [Release Assets](Release-Assets)

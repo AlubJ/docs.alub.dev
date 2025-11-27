@@ -4,6 +4,7 @@ GitHub.gml is a wrapper for the GitHub REST API written in GameMaker.
 - Retrieve information about repository releases and issues.
 - Create, update, edit and remove issues.
 - Create, update, edit and remove releases.
+- User authentication using OAuth.
 
 # Updating
 GitHub.gml uses semantic versioning. Major releases will introduce breaking changes and you'll have to rewrite some code. Minor releases will sometimes add something but never break compatibility.
