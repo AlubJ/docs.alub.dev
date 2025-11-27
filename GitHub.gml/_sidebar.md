@@ -24,7 +24,7 @@
     - [Issues](Issues)
     - [Issue Labels](Issue-Labels)
     - [Issue Milestones](Issue-Milestones)
-    - [Issue Sub-issues](Issue-Sub-Issues)
+    - [Issue Sub-issues](Issue-Sub-issues)
     - [Issue Timeline](Issue-Timeline)
 - *Releases*
     - [Releases](Releases)
