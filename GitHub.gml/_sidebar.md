@@ -6,9 +6,10 @@
 ---
 
 **API Reference**
-- [HTTP Requests](HTTP-Requests)
-- [GitHub Constructors](GitHub-Constructors)
+- [GitHub](GitHub)
 - [GitHub OAuth](GitHubOAuth)
+- [GitHub Constructors](GitHub-Constructors)
+- [HTTP Requests](HTTP-Requests)
 
 ---
 
