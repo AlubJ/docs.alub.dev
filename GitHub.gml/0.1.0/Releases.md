@@ -20,19 +20,9 @@ Creates a new GitHub request to get the latest release from a give repository.
 
 #### **Example**
 
-Create:
 ```gml
 // Create request
 request = github.getLatestRelease("AlubJ", "GitHub.gml");
-```
-
-Step:
-```gml
-// Check request
-if (request.httpStatus == 200)
-{
-    show_message(json_stringify(request.result));
-}
 ```
 
 <!-- tabs:end -->
@@ -59,19 +49,9 @@ Creates a new GitHub request to get a list of releases from a give repository.
 
 #### **Example**
 
-Create:
 ```gml
 // Create request
 request = github.getReleases("AlubJ", "GitHub.gml", 20, 1);
-```
-
-Step:
-```gml
-// Check request
-if (request.httpStatus == 200)
-{
-    show_message(json_stringify(request.result));
-}
 ```
 
 <!-- tabs:end -->
@@ -97,19 +77,9 @@ Creates a new GitHub request to get a release by a given tag name from a give re
 
 #### **Example**
 
-Create:
 ```gml
 // Create request
 request = github.getReleaseByTag("AlubJ", "GitHub.gml", "v1.0.0");
-```
-
-Step:
-```gml
-// Check request
-if (request.httpStatus == 200)
-{
-    show_message(json_stringify(request.result));
-}
 ```
 
 <!-- tabs:end -->
@@ -137,17 +107,7 @@ Creates a new GitHub request to get a release by a given release ID from a give 
 
 Create:
 ```gml
-// Create request
 request = github.getRelease("AlubJ", "GitHub.gml", 25881904);
-```
-
-Step:
-```gml
-// Check request
-if (request.httpStatus == 200)
-{
-    show_message(json_stringify(request.result));
-}
 ```
 
 <!-- tabs:end -->
@@ -173,22 +133,12 @@ Creates a new GitHub request to create a new release to a given repository.
 
 #### **Example**
 
-Create:
 ```gml
 // Create release struct
 var _release = new GitHubRelease("v1.0.0", undefined, "v1.0 Release", "My release notes", false, false, undefined, true, true);
 
 // Create release request
 request = github.createRelease("AlubJ", "GitHub.gml", _release);
-```
-
-Step:
-```gml
-// Check request
-if (request.httpStatus == 200)
-{
-    show_message(json_stringify(request.result));
-}
 ```
 
 <!-- tabs:end -->
@@ -215,22 +165,12 @@ Creates a new GitHub request to update an existing release in a given repository
 
 #### **Example**
 
-Create:
 ```gml
 // Create update release struct
 var _release = new GitHubRelease("v1.0.0", undefined, "v1.0 Release", "My release notes", false, false, undefined, true, true);
 
 // Create release request
 request = github.updateRelease("AlubJ", "GitHub.gml", 2481593, _release);
-```
-
-Step:
-```gml
-// Check request
-if (request.httpStatus == 200)
-{
-    show_message(json_stringify(request.result));
-}
 ```
 
 <!-- tabs:end -->
@@ -256,19 +196,9 @@ Creates a new GitHub request to delete an existing release in a given repository
 
 #### **Example**
 
-Create:
 ```gml
 // Delete release request
 request = github.deleteRelease("AlubJ", "GitHub.gml", 2481593);
-```
-
-Step:
-```gml
-// Check request
-if (request.httpStatus == 200)
-{
-    show_message(json_stringify(request.result));
-}
 ```
 
 <!-- tabs:end -->

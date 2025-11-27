@@ -31,5 +31,71 @@ When any GitHub request is called, a GitHub structure will be created. This stru
 | `contentLength` | `Real` | The content length of data that is being downloaded / uploaded. |
 | `sizeDownloaded` | `Real` | The size of the content that has currently been downloaded. |
 | `result` | `Struct` | The resulting decoded data from the request. |
+| `callback` | `Function` | The callback which will be executed upon a successful request (HTTP status `200` - `299`). |
+| `errorback` | `Function` | The callback which will be executed upon an unsuccessful request (HTTP status `400` - `599`). |
 
-?> If data is being uploaded via any HTTP request method, GameMaker does not return a `size_uploaded` value, so you will not be able to get the status of the current upload and just have to hope and pray that it successfully goes through. The GitHub API will provide a response once an update is completed.
+?> If data is being uploaded via any HTTP request method (especially `POST`, `PATCH` or `PUT`), GameMaker does not return a `size_uploaded` value, so you will not be able to get the status of the current upload and just have to hope and pray that it successfully goes through. The GitHub API will provide a response once an upload is completed.
+
+### setCallback
+`GitHubRequest.setCallback(method);`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+`Returns` - N/A.
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `method` | `Function` | The method to be executed upon a successful request. |
+
+Sets a method to be executed upon a successful request. The method that is passed into this function is expected to have two arguments, `requestBody` and `requestObject`. `requestBody` will return the body of the request as a `Struct`. `requestObject` is the entire GitHub Request object. A successful request will have a HTTP status `200` through to `299`.
+
+#### **Example**
+
+```gml
+request.setCallback(function (_requestBody, _requestObject) {
+    if (_requestObject.httpStatus != 204)
+    {
+        show_debug_message(_requestBody);
+    }
+    else
+    {
+        show_debug_message("No data");
+    }
+});
+```
+
+<!-- tabs:end -->
+
+### setErrorback
+`GitHubRequest.setErrorback(method);`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+`Returns` - N/A.
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `method` | `Function` | The method to be executed upon an unsuccessful request. |
+
+Sets a method to be executed upon an unsuccessful request. The method that is passed into this function is expected to have two arguments, `requestBody` and `requestObject`. `requestBody` will return the body of the request as a `Struct`. `requestObject` is the entire GitHub Request object. An unsuccessful request will have a HTTP status `400` through to `599`.
+
+#### **Example**
+
+```gml
+request.setErrorback(function (_requestBody, _requestObject) {
+    if (_requestObject.httpStatus == 404)
+    {
+        show_debug_message("Object not found.");
+    }
+    else
+    {
+        show_debug_message("Some other error.");
+    }
+});
+```
+
+<!-- tabs:end -->

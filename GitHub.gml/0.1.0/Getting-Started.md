@@ -9,7 +9,7 @@ To use the API, you'll need to construct a new `GitHub`, ideally as a global var
 global.github = new GitHub("your-auth-token");
 ```
 
-?> An authentication token is not strictly necessary to use the GitHub API however you may encounter API rate limits or certain endpoints returning `403`.
+?> An authentication token is not strictly necessary to use the GitHub API however you may encounter API rate limits or certain endpoints returning `403-AccessDenied` or `404-ContentNotFound`.
 
 !> GitHub.gml DOES NOT attempt to hide your authentication token and it is not recommended that you ship GitHub.gml with your final game.
 
@@ -26,15 +26,31 @@ github = new GitHub();
 
 // Create a request to get the latest release of GitHub.gml
 request = github.getLatestRelease("AlubJ", "GitHub.gml");
-requestComplete = false;
-```
 
-Step:
-```gml
-// Check request returns 200
-if (request.httpStatus == 200 && !requestComplete)
+// Create callback
+request.setCallback(function (_requestBody, _request))
 {
-    show_message(request.result);
-    requestComplete = true;
+    if (_request.httpStatus != 204)
+    {
+        show_debug_message(_requestBody);
+    }
+    else
+    {
+        show_debug_message("No content.");
+    }
 }
+
+// Create errorback
+request.setErrorback(function (_requestBody, _request))
+{
+    if (_request.httpStatus == 404)
+    {
+        show_debug_message("Content not found");
+    }
+    else
+    {
+        show_debug_message("Some other error.");
+    }
+}
+
 ```

@@ -22,7 +22,7 @@
 const config = {
 	name: 'GitHub.gml',
 	description: 'GitHub REST API wrapper for GameMaker.',
-	latestVersion: 'in-progress',
+	latestVersion: '0.1.0',
 	otherVersions: [],
 	favicon: 'assets/favicon.ico',
 	themeColor: '#4287f5',
