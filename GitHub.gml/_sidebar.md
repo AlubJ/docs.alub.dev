@@ -11,9 +11,9 @@
 ---
 
 **GitHub API Endpoints**
-- *Releases*
-    - [Releases](Releases.md)
-    - [Release Assets](Release-Assets.md)
+- *Gists*
+    - [Gists](Gists.md)
+    - [Gist Comments](Gist-Comments.md)
 - *Issues*
     - [Issue Assignees](Issue-Assignees.md)
     - [Issue Comments](Issue-Comments.md)
@@ -21,3 +21,8 @@
     - [Issues](Issues.md)
     - [Issue Labels](Issue-Labels.md)
     - [Issue Milestones](Issue-Milestones.md)
+    - [Issue Sub-issues](Issue-Sub-Issues.md)
+    - [Issue Timeline](Issue-Timeline.md)
+- *Releases*
+    - [Releases](Releases.md)
+    - [Release Assets](Release-Assets.md)

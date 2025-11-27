@@ -22,7 +22,7 @@ GitHub.gml comes with helper constructors for certain aspects of the REST API, m
 | `[state]` | `String` | The state of the issue, either `open` or `closed` (only use when updating an issue). |
 | `[stateReason]` | `String` | The state reason of the issue, either `completed`, `not_planned`, `duplicate`, `reopened` or `null` (only use when updating an issue). |
 
-Creates a new GitHub Issue structure for use when creating or updating a new issue. All properties can be accessed through the `.` or `[$]` accessor if you wish to reuse this struct.
+Creates a new GitHub Issue structure for use when creating or updating an issue. All properties can be accessed through the `.` or `[$]` accessor if you wish to reuse this struct.
 
 [GitHub Documentation](https://docs.github.com/en/rest/issues/issues#create-an-issue).
 
@@ -59,7 +59,7 @@ request = github.createIssue("AlubJ", "GitHub.gml", _issue);
 | `[generateReleaseNotes]` | `Bool` | Whether to generate release notes based on the commit history for this release. |
 | `[makeLatest]` | `Bool` | Whether to make this the latest release or not. |
 
-Creates a new GitHub Release structure for use when creating or updating a new release. All properties can be accessed through the `.` or `[$]` accessor if you wish to reuse this struct.
+Creates a new GitHub Release structure for use when creating or updating a release. All properties can be accessed through the `.` or `[$]` accessor if you wish to reuse this struct.
 
 [GitHub Documentation](https://docs.github.com/en/rest/releases/releases#create-a-release).
 
@@ -71,6 +71,37 @@ var _release = new GitHubRelease("v1.0.0", undefined, "v1.0 Release", "My releas
 
 // Create release request
 request = github.createRelease("AlubJ", "GitHub.gml", _release);
+```
+
+<!-- tabs:end -->
+
+## GitHubGist
+`new GitHubGist([description], [public]);`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+`Returns` - GitHub Release structure.
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `[description]` | `String` | The description of the gist. |
+| `[public]` | `Bool` | Whether the gist is public or not. |
+
+Creates a new GitHub Gist structure for use when creating or updating a gist. All properties can be accessed through the `.` or `[$]` accessor if you wish to reuse this struct. To add or remove files from this gist, call `addFile` and `removeFile`.
+
+[GitHub Documentation](https://docs.github.com/en/rest/gists/gists#create-a-gist).
+
+#### **Example**
+
+```gml
+// Create gist struct
+var _gist = new GitHubGist("My Gist", true);
+_gist.addFile("mycode.gml", "/// This is my code");
+
+// Create gist request
+request = github.createGist(_gist);
 ```
 
 <!-- tabs:end -->
