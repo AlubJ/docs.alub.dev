@@ -1,6 +1,6 @@
 # GitHubOAuth
 
-`new GitHubOAuth(clientID);`
+`new GitHubOAuth(clientID, [clientSecret]);`
 
 <!-- tabs:start -->
 
@@ -10,14 +10,39 @@
 
 | Name | Type | Description |
 | --- | --- | --- |
-| `_clientID` | `String` | The client ID to use for authentication. |
+| `clientID` | `String` | The client ID to use for authentication. |
+| `[clientSecret]` | `String` | The client secret to use for web-flow authentication. |
 
 Constructor for creating a new instance of GitHubOAuth.
 
 #### **Example**
 
 ```gml
-oauth = new GitHubOAuth(_clientID);
+oauth = new GitHubOAuth(_clientID, _clientSecret);
+```
+
+<!-- tabs:end -->
+
+## requestAuthenticationViaWebPage
+`GitHubOAuth.requestAuthenticationViaWebPage(scope, [expireTime]);`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+`Returns` - `N/A`.
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `scope` | `Array.String` | An array of authentication [scopes](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps#available-scopes). |
+| `[expireTime]` | `Real` | Expiry time in seconds to allow the authentication request to expire. |
+
+Request OAuth user authentication via a web page.
+
+#### **Example**
+
+```gml
+oauth.requestAuthenticationViaWebPage([ "repo", "read:user", ], 900);
 ```
 
 <!-- tabs:end -->
@@ -33,14 +58,14 @@ oauth = new GitHubOAuth(_clientID);
 
 | Name | Type | Description |
 | --- | --- | --- |
-| `scope` | `Array.String` | An array of authentication [scopes](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps). |
+| `scope` | `Array.String` | An array of authentication scopes. |
 
-Request OAuth user authentication.
+Request OAuth user authentication via the device flow.
 
 #### **Example**
 
 ```gml
-oauth.requestAuthentication([ "repo", "read:user" ]);
+var _request = oauth.requestAuthenticationViaWebPage([ "repo", "read:user", ]);
 ```
 
 <!-- tabs:end -->
@@ -52,22 +77,59 @@ oauth.requestAuthentication([ "repo", "read:user" ]);
 
 #### **Description**
 
-`Returns` - N/A.
+`Returns` - `N/A`.
 
 | Name | Type | Description |
 | --- | --- | --- |
 | `deviceCode` | `String` | The device code that was returned back from `requestAuthentication`. |
 | `interval` | `Real` | The interval in seconds to poll the authentication. |
+| `[expireTime]` | `Real` | The time in seconds in which the current authentication device code will expire. |
 | `[maxAttempts]` | `Real` | The maximum number of attempts to make to poll the authentication. |
 
-Start polling the authentication to check if the user as granted it. Only call this function once.
-
-?> Keep the interval time at or above the interval time that GitHub returns back upon requesting authentication. GitHub will rate limit if requests are sent out too quickly. I recommend you use the interval time that GitHub gives you and add a couple more second to it.
+Start polling the authentication to check if the user as granted it.
 
 #### **Example**
 
 ```gml
-oauth.requestAuthentication(_deviceCode, _interval, 20);
+oauth.pollAuthentication(_deviceCode, _interval, _expireTime, 20);
+```
+
+<!-- tabs:end -->
+
+## cancelAuthentication
+`GitHubOAuth.cancelAuthentication();`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+`Returns` - `N/A`.
+
+Cancels the current authentication request.
+
+#### **Example**
+
+```gml
+oauth.cancelAuthentication();
+```
+
+<!-- tabs:end -->
+
+## hasActiveRequest
+`GitHubOAuth.hasActiveRequest();`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+`Returns` - `Bool`.
+
+Returns if there is an active authentication request in-progress. GitHub.gml only allows one authentication request at a time, this is useful to check if there is one still running before starting another request.
+
+#### **Example**
+
+```gml
+var _hasActiveRequest = oauth.hasActiveRequest();
 ```
 
 <!-- tabs:end -->
@@ -79,7 +141,7 @@ oauth.requestAuthentication(_deviceCode, _interval, 20);
 
 #### **Description**
 
-`Returns` - N/A.
+`Returns` - `N/A`.
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -90,7 +152,72 @@ Set the authentication callback which will be executed when the authentication i
 #### **Example**
 
 ```gml
-oauth.setAuthenticationCallback(_method);
+oauth.setAuthenticationCallback(_myCallbackFunction);
+```
+
+<!-- tabs:end -->
+
+## setAuthenticationErrorback
+`GitHubOAuth.setAuthenticationErrorback(callback);`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+`Returns` - `N/A`.
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `callback` | `Function` | The method to execute. |
+
+Set the authentication errorback which will be executed when the authentication is unsuccessful.
+
+#### **Example**
+
+```gml
+oauth.setAuthenticationErrorback(_myErrorbackFunction);
+```
+
+<!-- tabs:end -->
+
+## setAuthenticationTimeoutCallback
+`GitHubOAuth.setAuthenticationTimeoutCallback(callback);`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+`Returns` - `N/A`.
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `callback` | `Function` | The method to execute. |
+
+Set the authentication callback which will be executed when the authentication times out.
+
+#### **Example**
+
+```gml
+oauth.setAuthenticationTimeoutCallback(_myCallbackFunction);
+```
+
+<!-- tabs:end -->
+
+## hasAuthentication
+`GitHubOAuth.hasAuthentication();`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+`Returns` - `Bool`.
+
+Returns wether we have user authentication or not.
+
+#### **Example**
+
+```gml
+var _userHasAuthentication = oauth.hasAuthentication();
 ```
 
 <!-- tabs:end -->
@@ -104,12 +231,12 @@ oauth.setAuthenticationCallback(_method);
 
 `Returns` - `String`.
 
-Returns back the current authentication token. Returns `undefined` if no authentication has been granted.
+Returns back the current authentication token.
 
 #### **Example**
 
 ```gml
-oauth.getAuthenticationToken();
+var _userAuthenticationToken = oauth.hasAuthentication();
 ```
 
 <!-- tabs:end -->
@@ -123,12 +250,12 @@ oauth.getAuthenticationToken();
 
 `Returns` - `String`.
 
-Returns back the current authentication token type. Returns `undefined` if no authentication has been granted.
+Returns back the current authentication token type.
 
 #### **Example**
 
 ```gml
-oauth.getAuthenticationTokenType();
+var _userAuthenticationTokenType = oauth.getAuthenticationTokenType();
 ```
 
 <!-- tabs:end -->
@@ -142,12 +269,58 @@ oauth.getAuthenticationTokenType();
 
 `Returns` - `String`.
 
-Returns back the current authentication token scope. Returns `undefined` if no authentication has been granted.
+Returns back the current authentication token [scope](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps#available-scopes).
 
 #### **Example**
 
 ```gml
-oauth.getAuthenticationTokenScope();
+var _userAuthenticationTokenScope = oauth.getAuthenticationTokenScope();
+```
+
+<!-- tabs:end -->
+
+## setAuthenticationSuccessHTML
+`GitHubOAuth.setAuthenticationSuccessHTML(html);`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+`Returns` - `N/A`.
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `html` | `String` | The HTML to use. |
+
+Set the web-flow success HTML which will be displayed in the browser when authentication is successful.
+
+#### **Example**
+
+```gml
+oauth.setAuthenticationSuccessHTML(_html);
+```
+
+<!-- tabs:end -->
+
+## setAuthenticationErrorHTML
+`GitHubOAuth.setAuthenticationErrorHTML(html);`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+`Returns` - `N/A`.
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `html` | `String` | The HTML to use. |
+
+Set the web-flow error HTML which will be displayed in the browser when authentication is unsuccessful.
+
+#### **Example**
+
+```gml
+oauth.setAuthenticationErrorHTML(_html);
 ```
 
 <!-- tabs:end -->

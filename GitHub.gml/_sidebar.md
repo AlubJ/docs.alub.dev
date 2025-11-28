@@ -1,5 +1,6 @@
 - [Introduction](README)
 - [Getting Started](Getting-Started)
+- [Configuration](Configuration)
 - [Authentication](Authentication)
 - [Request Structures](Requests)
 
@@ -29,3 +30,6 @@
 - *Releases*
     - [Releases](Releases)
     - [Release Assets](Release-Assets)
+- *Users*
+    - [User Attestations](User-Attestations)
+    - [Users](Users)

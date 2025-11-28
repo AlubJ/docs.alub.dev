@@ -44,3 +44,79 @@ github.setAuthenticationToken(_authToken);
 ```
 
 <!-- tabs:end -->
+
+## getRateLimitLimit
+`GitHub.getRateLimitLimit();`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+`Returns` - `Real`.
+
+Get the current rate limit for the authenticated user, returns `undefined` when no requests have been made.
+
+#### **Example**
+
+```gml
+var _rateLimit = github.getRateLimitLimit();
+```
+
+<!-- tabs:end -->
+
+## getRateLimitUsed
+`GitHub.getRateLimitUsed();`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+`Returns` - `Real`.
+
+Get the current used rate limit for the authenticated user, returns `undefined` when no requests have been made.
+
+#### **Example**
+
+```gml
+var _rateLimitUsed = github.getRateLimitUsed();
+```
+
+<!-- tabs:end -->
+
+## getRateLimitRemaining
+`GitHub.getRateLimitRemaining();`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+`Returns` - `Real`.
+
+Get the current remaining rate limit for the authenticated user, returns `undefined` when no requests have been made.
+
+#### **Example**
+
+```gml
+var _rateLimitRemaining = github.getRateLimitRemaining();
+```
+
+<!-- tabs:end -->
+
+## getRateLimitReset
+`GitHub.getRateLimitReset();`
+
+<!-- tabs:start -->
+
+#### **Description**
+
+`Returns` - `Datetime`.
+
+Get the current rate limit reset for the authenticated user, returns `undefined` when no requests have been made.
+
+#### **Example**
+
+```gml
+var _rateLimitReset = github.getRateLimitReset();
+```
+
+<!-- tabs:end -->
